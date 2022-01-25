@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vinicius.helpdesk.domain.enums.Perfil;
 
 @Entity
+
 public abstract class Pessoa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

@@ -1,7 +1,7 @@
 package com.vinicius.helpdesk.domain.enums;
 
 public enum Status {
-	ADMIN(0, "ROLE_ADMIN"), CLIENTE(1, "ROLE_CLIENTE"), TECNICO(2, "ROLE_TECNICO");
+	ABERTO(0, "ABERTO"), ANDAMENTO(1, "ANDAMENTO"), ENCERRADO(2, "ENCERRADO");
 	
 	private Integer codigo;
 	private String descricao;

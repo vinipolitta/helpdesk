@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import com.vinicius.helpdesk.domain.enums.Perfil;
 
 @Entity
+
 public class Cliente extends Pessoa {
 	private static final long serialVersionUID = 1L;
 	
