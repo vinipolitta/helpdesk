@@ -37,12 +37,20 @@ public class DBServices {
 		Cliente cli1 = new Cliente(null, "Nayelen kretli", "17963915068", "nayteste@teste.com", "123");
 		cli1.addPerfil(Perfil.CLIENTE);
 		
+		Cliente cli2 = new Cliente(null, "Melissa kretli", "33893165070", "melteste@teste.com", "123");
+		cli1.addPerfil(Perfil.CLIENTE);
+		
+		
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec1, cli1);
+		Chamado c2 = new Chamado(null, Prioridade.BAIXA, Status.ABERTO, "Chamado 02", "Segundo Chamado", tec2, cli2);
 		
 		tecnicoRepository.saveAll(Arrays.asList(tec1));
 		tecnicoRepository.saveAll(Arrays.asList(tec2));
 		
 		clienteRepository.saveAll(Arrays.asList(cli1));
+		clienteRepository.saveAll(Arrays.asList(cli2));
+		
 		chamadoRepository.saveAll(Arrays.asList(c1));
+		chamadoRepository.saveAll(Arrays.asList(c2));
 	}
 }
