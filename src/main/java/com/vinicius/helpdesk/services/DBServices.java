@@ -31,12 +31,17 @@ public class DBServices {
 		Tecnico tec1 = new Tecnico(null, "Vinicius Politta", "19184465042", "vini@teste.com", "123");
 		tec1.addPerfil(Perfil.ADMIN);
 		
+		Tecnico tec2 = new Tecnico(null, "Vinicius Santos", "19184465090", "vini2@teste.com", "123");
+		tec1.addPerfil(Perfil.ADMIN);
+		
 		Cliente cli1 = new Cliente(null, "Nayelen kretli", "01797290045", "nayteste@teste.com", "123");
 		cli1.addPerfil(Perfil.CLIENTE);
 		
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec1, cli1);
 		
 		tecnicoRepository.saveAll(Arrays.asList(tec1));
+		tecnicoRepository.saveAll(Arrays.asList(tec2));
+		
 		clienteRepository.saveAll(Arrays.asList(cli1));
 		chamadoRepository.saveAll(Arrays.asList(c1));
 	}
