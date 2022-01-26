@@ -28,13 +28,13 @@ public class DBServices {
 	
 	
 	public void instaciaDB() {
-		Tecnico tec1 = new Tecnico(null, "Vinicius Politta", "19184465042", "vini@teste.com", "123");
+		Tecnico tec1 = new Tecnico(null, "Vinicius Politta", "86779894044", "vini@teste.com", "123");
 		tec1.addPerfil(Perfil.ADMIN);
 		
-		Tecnico tec2 = new Tecnico(null, "Vinicius Santos", "19184465090", "vini2@teste.com", "123");
+		Tecnico tec2 = new Tecnico(null, "Vinicius Santos", "67378545082", "vini2@teste.com", "123");
 		tec1.addPerfil(Perfil.ADMIN);
 		
-		Cliente cli1 = new Cliente(null, "Nayelen kretli", "01797290045", "nayteste@teste.com", "123");
+		Cliente cli1 = new Cliente(null, "Nayelen kretli", "17963915068", "nayteste@teste.com", "123");
 		cli1.addPerfil(Perfil.CLIENTE);
 		
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec1, cli1);

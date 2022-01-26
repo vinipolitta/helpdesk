@@ -1,6 +1,9 @@
 package com.vinicius.helpdesk.services;
 
-import java.util.Optional; 
+import java.util.Optional;
+
+import javax.validation.Valid;
+
 import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +42,14 @@ public class TecnicoService {
 		Tecnico newObj = new Tecnico(objDTO);
 		return repository.save(newObj);
 	}
+	
+	public Tecnico update(Integer id, @Valid TecnicoDTO objDTO) {
+		objDTO.setId(id);
+		Tecnico oldObj = findById(id);
+		validaPorCpfEEmail(objDTO);
+		oldObj = new Tecnico(objDTO);
+		return repository.save(oldObj);		
+	}
 
 	private void validaPorCpfEEmail(TecnicoDTO objDTO) {
 		Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
@@ -51,6 +62,8 @@ public class TecnicoService {
 			throw new DataIntegrityViolationException("Email já cadastrado do sistema!");
 		}
 	}
+
+	
 	
 	
 	
