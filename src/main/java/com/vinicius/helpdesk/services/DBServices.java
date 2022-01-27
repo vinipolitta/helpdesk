@@ -1,8 +1,9 @@
 package com.vinicius.helpdesk.services;
 
-import java.util.Arrays;
+import java.util.Arrays; 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vinicius.helpdesk.domain.Chamado;
@@ -23,23 +24,25 @@ public class DBServices {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	@Autowired
-	private ChamadoRepository chamadoRepository;
+	private ChamadoRepository chamadoRepository;	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 		
 	
 	
 	public void instaciaDB() {
-		Tecnico tec1 = new Tecnico(null, "Vinicius Politta", "86779894044", "vini@teste.com", "123");
+		Tecnico tec1 = new Tecnico(null, "Vinicius Politta", "86779894044", "vini@teste.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);		
-		Tecnico tec2 = new Tecnico(null, "Vinicius Santos", "67378545082", "vini2@teste.com", "123");
+		Tecnico tec2 = new Tecnico(null, "Vinicius Santos", "67378545082", "vini2@teste.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
-		Tecnico tec3 = new Tecnico(null, "Vinicius TESTE", "61842655043", "viniTeste@teste.com", "123");
+		Tecnico tec3 = new Tecnico(null, "Vinicius TESTE", "61842655043", "viniTeste@teste.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
 		
-		Cliente cli1 = new Cliente(null, "Nayelen kretli", "17963915068", "nayteste@teste.com", "123");
+		Cliente cli1 = new Cliente(null, "Nayelen kretli", "17963915068", "nayteste@teste.com", encoder.encode("123"));
 		cli1.addPerfil(Perfil.CLIENTE);		
-		Cliente cli2 = new Cliente(null, "Melissa kretli", "33893165070", "melteste@teste.com", "123");
+		Cliente cli2 = new Cliente(null, "Melissa kretli", "33893165070", "melteste@teste.com", encoder.encode("123"));
 		cli1.addPerfil(Perfil.CLIENTE);
-		Cliente cli3 = new Cliente(null, "Melissa TEste", "87393155095", "meltesteteste@teste.com", "123");
+		Cliente cli3 = new Cliente(null, "Melissa TEste", "87393155095", "meltesteteste@teste.com", encoder.encode("123"));
 		cli1.addPerfil(Perfil.CLIENTE);
 		
 		
