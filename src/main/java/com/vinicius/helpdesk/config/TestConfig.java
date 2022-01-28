@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 import com.vinicius.helpdesk.services.DBServices;
 
 @Configuration
-@Profile("dev")
+@Profile("test")
 public class TestConfig {
 	
 	@Autowired
