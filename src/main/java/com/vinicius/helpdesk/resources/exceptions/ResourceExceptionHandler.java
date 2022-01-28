@@ -17,30 +17,36 @@ import com.vinicius.helpdesk.services.exceptions.ObjectNotFoundExeption;
 public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(ObjectNotFoundExeption.class)
-	public ResponseEntity<StandardError> objectNotFoundException(ObjectNotFoundExeption ex, HttpServletRequest request) {
-		
-		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), 
+	public ResponseEntity<StandardError> objectnotFoundException(ObjectNotFoundExeption ex,
+			HttpServletRequest request) {
+
+		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),
 				"Object Not Found", ex.getMessage(), request.getRequestURI());
+
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
 	}
 	
 	@ExceptionHandler(DataIntegrityViolationException.class)
-	public ResponseEntity<StandardError> dataIntegrityViolationException(DataIntegrityViolationException ex, HttpServletRequest request) {
-		
-		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), 
+	public ResponseEntity<StandardError> dataIntegrityViolationException(DataIntegrityViolationException ex,
+			HttpServletRequest request) {
+
+		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
 				"Violação de dados", ex.getMessage(), request.getRequestURI());
+
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<StandardError> validationErrors(MethodArgumentNotValidException ex, HttpServletRequest request) {
-		
+	public ResponseEntity<StandardError> validationErrors(MethodArgumentNotValidException ex,
+			HttpServletRequest request) {
+
 		ValidationError errors = new ValidationError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), 
-				"Validation Error", "Erro na validação dos campos", request.getRequestURI());
+				"Validation error", "Erro na validação dos campos", request.getRequestURI());
 		
 		for(FieldError x : ex.getBindingResult().getFieldErrors()) {
 			errors.addErrors(x.getField(), x.getDefaultMessage());
 		}
+
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
 	}
 }
